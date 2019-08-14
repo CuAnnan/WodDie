@@ -1,0 +1,18 @@
+{
+  "name": "wodiebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "extensiblediscordbot": "git+https://github.com/CuAnnan/DiscordBot.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testDiceRoller": "node testDieRoller.js",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
