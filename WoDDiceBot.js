@@ -55,15 +55,20 @@ class WoDDiceBot extends DiscordBot
 
     displayResults(message, results)
     {
-        let responseText = `You rolled ${results.pool} dice.`;
+        let response = [`You rolled ${results.pool} dice at a difficulty of ${results.difficulty}.`];
+        if(results.specialty)
+        {
+            response.push("It was considered a specialty roll.");
+        }
         if(results.botch)
         {
-            responseText += ' You botched!';
+            response.push('You botched!');
         }
         else
         {
-            responseText += ` You got ${results.successes} successes.`;
+            response.push(`You got ${results.successes} successes.`);
         }
+
         let diceRolled = [];
         for(let dieRoll of results.dice)
         {
@@ -88,10 +93,8 @@ class WoDDiceBot extends DiscordBot
                 diceRolled.push(die);
             }
         }
-        message.reply([
-            responseText,
-            'Dice rolled: ['+diceRolled.join(', ')+']'
-        ]);
+        response.push('Dice rolled: ['+diceRolled.join(', ')+']');
+        message.reply(response);
     }
 }
 
