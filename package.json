@@ -7,9 +7,12 @@
     "discord.js": "^11.5.1",
     "extensiblediscordbot": "git+https://github.com/CuAnnan/DiscordBot.git"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^16.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify ./frontend.js > ./bundle.js",
     "testDiceRoller": "node testDieRoller.js",
     "start": "node app.js"
   },

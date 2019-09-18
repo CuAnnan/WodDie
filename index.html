@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diceroller</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form onsubmit="return false;">
+                    <h2 class="row">Dice pool information</h2>
+                    <div class="form-group row">
+                        <label for="dice-pool" class="col-sm-2 col-form-label">Pool</label>
+                        <div class="col-sm-10">
+                            <input id="dice-pool" class="form-control" type="number" min="0" value="5"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="difficulty" class="col-sm-2 col-form-label">Difficulty</label>
+                        <div class="col-sm-10">
+                            <input id="difficulty" class="form-control" type="number" min="2" max="10" value="6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">Specialty</div>
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="specialty" id="specialty1" value="yes">
+                                <label class="form-check-label" for="specialty1">Yes</label>
+                                <input class="form-check-input" type="radio" checked="checked" name="specialty" id="specialty2" value="no">
+                                <label class="form-check-label" for="specialty2">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <button class="btn btn-primary" id="roll-button">Roll</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <h2 class="row">Results</h2>
+                <div class="row">
+                    <div class="col">Successes:</div>
+                    <div class="col" id="result-successes"></div>
+                </div>
+                <div class="row">
+                    <div class="col">Rolls:</div>
+                    <div class="col" id="result-rolls"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./bundle.js"></script>
+</body>
+</html>
