@@ -28,7 +28,8 @@ class WoDDiceBot extends DiscordBot
             "`!roll <n> [diff-<d>] [spec]`",
             "    `!roll 5 would` roll five dice at the standard difficulty of 6",
             "    `!roll 6 diff-7` would roll six dice but only consider 7s a success",
-            "    `!roll 7 spec` would roll 7 dice and consider tens two successes"
+            "    `!roll 7 spec` would roll 7 dice and consider tens two successes",
+            "    `!roll 7 diff-7 -- rolling strength + brawl` would treat the text after the double dashes as a comment which is for the sake of posterity"
         ]);
     }
 
