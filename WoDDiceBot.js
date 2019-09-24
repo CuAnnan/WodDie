@@ -34,7 +34,8 @@ class WoDDiceBot extends DiscordBot
 
     simpleRoll(commandParts, message, comment)
     {
-        let messageText = message.content.toLowerCase(),
+        let messageParts = message.content.split('--'),
+            messageText = message.content.toLowerCase(),
             poolMatch = messageText.match(/\s(\d+)\s?/),
             difficultyMatch = messageText.match(/diff\-(\d+)/),
             specialty = messageText.indexOf('spec')>-1,
@@ -50,12 +51,16 @@ class WoDDiceBot extends DiscordBot
         }
         let action = new Action(pool, difficulty, specialty);
         let results = action.getResults();
-        this.displayResults(message, results);
+        this.displayResults(message, results, comment);
     }
 
-    displayResults(message, results)
+    displayResults(message, results, comment)
     {
         let response = [`You rolled ${results.pool} dice at a difficulty of ${results.difficulty}.`];
+        if(comment)
+        {
+            response.push(`Comment provided: ${comment}`);
+        }
         if(results.specialty)
         {
             response.push("It was considered a specialty roll.");
