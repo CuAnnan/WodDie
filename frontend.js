@@ -2,6 +2,12 @@ const {Action} = require('./DiceRoller');
 
 (
     ($)=>{
+        let $successesRow = $('#successes-row'),
+            $successesCol =$('#result-successes'),
+            $botchRow = $('#botch-row'),
+            $willPowerCol = $('#result-willpower'),
+            $specialtyCol = $('#result-specialty')
+
         $(
             ()=>{
                 $('#roll-button').click(()=>{
@@ -12,10 +18,23 @@ const {Action} = require('./DiceRoller');
                             $('input[name="willpower"]:checked').val() === 'yes'
                         ),
                         result = action.getResults();
-                    $('#result-successes').text(result.successes);
-                    $('#result-willpower').text(result.willpower?'Yes':'No');
+                    $successesCol.text(result.successes);
+                    $willPowerCol.text(result.willpower?'Yes':'No');
+
                     $('#result-specialty').text(result.speciality?'Yes':'No');
                     let html = [];
+
+                    if(result.botch)
+                    {
+                        $successesRow.hide();
+                        $botchRow.show();
+                    }
+                    else
+                    {
+                        $successesRow.show();
+                        $botchRow.hide();
+                    }
+
                     for(let roll of result.diceValues)
                     {
                         if(roll === 1)

@@ -19,7 +19,7 @@ class Die
         this.successes = 0;
         this.result = Math.floor(Math.random() * 10) + 1;
 
-        if(this.result == 1)
+        if(this.result === 1)
         {
             this.successes = -1;
         }
@@ -72,17 +72,17 @@ class Action
 
     rollDice()
     {
-        if(this.performed)
+        if (this.performed)
         {
             return this;
         }
 
         let hasOnes = false;
 
-        for(let i = 0; i < this.pool; i++)
+        for (let i = 0; i < this.pool; i++)
         {
             let die = new Die(this.difficulty, this.specialty).roll();
-            if(die.result == -1)
+            if (die.result === 1)
             {
                 hasOnes = true;
             }
@@ -91,16 +91,18 @@ class Action
             this.dice.push(die);
         }
 
-        if(this.willpower)
+        if (this.willpower)
         {
-            if(this.successes < 0)
+            if (this.successes < 0)
             {
                 this.successes = 0;
             }
-            this.successes ++;
+            this.successes++;
         }
 
-        if(this.successes == 0 && hasOnes)
+        this.successes = Math.max(this.successes, 0);
+
+        if(this.successes === 0 && hasOnes)
         {
             this.botch = true;
         }
