@@ -45,11 +45,12 @@ class Die
 
 class Action
 {
-    constructor(pool, difficulty, specialty)
+    constructor(pool, difficulty, specialty, willpower)
     {
         this.pool = pool?pool:1;
         this.difficulty = difficulty?difficulty:6;
         this.specialty = specialty?specialty:false;
+        this.willpower = willpower?willpower:false;
         this.botch = false;
         this.performed = false;
         this.dice = [];
@@ -89,6 +90,16 @@ class Action
             this.successes += die.successes;
             this.dice.push(die);
         }
+
+        if(this.willpower)
+        {
+            if(this.successes < 0)
+            {
+                this.successes = 0;
+            }
+            this.successes ++;
+        }
+
         if(this.successes == 0 && hasOnes)
         {
             this.botch = true;
@@ -106,6 +117,7 @@ class Action
             dice:this.dice,
             difficulty:this.difficulty,
             speciality:this.specialty,
+            willpower:this.willpower,
             pool:this.pool,
             diceValues:this.diceValues
         };
