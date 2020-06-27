@@ -58,6 +58,11 @@ class Action
         this.diceValues = [];
     }
 
+    static fromJSON(json)
+    {
+        return new Action(json.pool, json.difficulty, json.specialty, json.willpower);
+    }
+
     perform()
     {
         if(this.performed)
